@@ -6,3 +6,12 @@ install:
 - pip install .
 script:
 - py.test
+
+deploy:
+  provider: pypi
+  user: relleums
+  password:
+    secure: zTJG1K5EfZI93Amgc60PHHNwx+vjHHwHcqaH1b93+OgAuitpEkfs9Lm/KcyYwefqjcTWBJn2fi3tCye9UhMHhcl/C2Y6RdHGexpTBst/G1/wx41+c3jm87lGQGOCvvDtzImp18VrcbJhNrb1CA2hharzJ+i16brXtYdHGvT7JgQV8QyQ942Bs3Goz2DlsDxYgJdEplO1rAZjf77rtQrNBp3BvTOeKowTIuoEa2I4xt9BoqjCCQRq6o5fVwl1pq+K6hEMGUWhoxOF1moufzit3xRw72r7PdrEx08bIyRElJKhu8Fu0L2/WBo3uUjCgnj4O9utDmL+pkSe/lADJnYcQz2KfwmE7aZr8e8IWgw7L9cnvm2VV80TmDzdRT+OmVRQlV6D76jZnsbpA16poYuwLG+BdB1vJTVjUDMZ2lH+Tf9lNi+19HDSUiRcJmPxhUD9OyJTB684gUtJJXy5fHPAQGxml4GnQLFPGvZSi1dfRnIKUzT2hhqgzw/UBQkAd7M59v5v2/uOGm7RJNWQXteuxCPbFM7vL+M+hQuQELJrSJQyE9NF3DIrW2Vz2WZwHNV+457YHSviDzbrh6WvZ9MAZFbJfJ8J/mZAmanGjILWBdn2/KqhGnHRWDh4kdLnCTXaLe9WLP/iIscPTBCZvaDbLq9S9AUM9Xnv/+SBRRGNO6Y=
+  on:
+    tags: true
+    branch: master
