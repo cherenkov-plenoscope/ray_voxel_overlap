@@ -20,7 +20,10 @@ setuptools.setup(
     packages=[
         'ray_voxel_overlap'
     ],
-    install_requires=[],
+    install_requires=[
+        'cython',
+        'scipy',
+    ],
     classifiers=[
         "Programming Language :: Python :: 3",
         "Programming Language :: C",
