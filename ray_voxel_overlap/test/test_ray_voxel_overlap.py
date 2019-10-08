@@ -1,16 +1,13 @@
-import pytest
 import numpy as np
 import ray_voxel_overlap as rvo
 
 overlap_of_ray_with_voxels = [
     rvo._py_overlap.estimate_overlap_of_ray_with_voxels,
-    rvo._cython_overlap.estimate_overlap_of_ray_with_voxels,
-]
+    rvo._cython_overlap.estimate_overlap_of_ray_with_voxels]
 
 single_voxel_overlap = [
     rvo._py_overlap._estimate_ray_box_overlap,
-    rvo._cython_overlap._estimate_ray_box_overlap
-]
+    rvo._cython_overlap._estimate_ray_box_overlap]
 
 
 def test_plane_intersection():
