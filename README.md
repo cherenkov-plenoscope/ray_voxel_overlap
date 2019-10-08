@@ -7,6 +7,38 @@ Estimate the euclidean overlap passed by a ray within a rectangular volume cell 
 For a given, rectangular space partitioning in 3D, and a given ray the overlap of all voxels with the ray is estimated.
 The figure shows a ray and its overlap with voxels.
 A brown overlap with voxel ```3```, a red overlap with voxel ```0```, a purple overlap with voxel ```4```, and a green overlap with voxel ```5```. The ray is defined by its support and direction vectors. The space-partitioning is defined by its bin-edges.
+# Interface
+There is one core function:
+
+```python
+import ray_voxel_overlap
+ray_voxel_overlap.estimate_overlap_of_ray_with_voxels?
+"""
+Returns the voxel indices and overlap distances for one single ray
+(defined by support and direction) with voxels defined by the bin_edges
+in x,y and z.
+
+support         3D support vector of ray.
+
+direction       3D direction vector of ray.
+
+x_bin_edges     voxel bin edge positions in x.
+
+y_bin_edges     voxel bin edge positions in y.
+
+z_bin_edges     voxel bin edge positions in z.
+"""
+```
+
+There are two more functions:
+
+- 2nd ```ray_voxel_overlap.estimate_system_matrix()```
+
+Create a system-matrix using scipy.sparse matrix which can be used for iterative tomographic reconstructions.
+
+- 3rd ```ray_voxel_overlap.estimate_overlap_of_ray_bundle_with_voxels()```
+
+Average the overlap of multiple rays representing a single read-out-channel. This is useful when a single ray is not representative enough for the geometry sensed by a read-out-channel in your tomographic setup, e.g. when there is a narrow depth-of-field.
 
 ## Tomographic system-matrix
 
