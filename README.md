@@ -46,6 +46,9 @@ system_matrix = rvo.estimate_system_matrix(
 )
 ```
 
-## Support
-    ETH-Zurich, Switzerland
-    MPI-Heidelberg, Germany
+## Authors
+Sebastian A. Mueller,
+
+ETH-Zurich, Switzerland (2014-2019),
+
+MPI-Heidelberg, Germany (2019-)
