@@ -1,4 +1,4 @@
-# Overlap of a ray and a volume cell (voxel)
+# Overlap of a ray and a volume cell (voxel) [![Build Status](https://travis-ci.org/cherenkov-plenoscope/ray_voxel_overlap.svg?branch=master)](https://travis-ci.org/cherenkov-plenoscope/ray_voxel_overlap)
 
 Estimate the euclidean overlap passed by a ray within a rectangular volume cell (voxel).
 
