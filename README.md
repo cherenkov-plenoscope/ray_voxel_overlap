@@ -5,8 +5,8 @@ Estimate the euclidean overlap passed by a ray within a rectangular volume cell 
 ![img](readme/ray_and_voxel.svg)
 
 For a given, rectangular space partitioning in 3D, and a given ray the overlap of all voxels with the ray is estimated.
-The figure shows a ray defined by its support vector and its direction vector which has a non zero overlap with three out of the eight voxels.
-A brown overlap with voxel ```3```, a red overlap with voxel ```0```, a purple overlap with voxel ```4```, and a green overlap with voxel ```5```.
+The figure shows a ray and its overlap with voxels.
+A brown overlap with voxel ```3```, a red overlap with voxel ```0```, a purple overlap with voxel ```4```, and a green overlap with voxel ```5```. The ray is defined by its support and direction vectors. The space-partitioning is defined by its bin-edges.
 
 ## Tomographic system-matrix
 
@@ -45,6 +45,8 @@ system_matrix = rvo.estimate_system_matrix(
     z_bin_edges=np.linspace(0., 200., N_Z_BINS+1),
 )
 ```
+## How it is done
+To be fast, the production-code is written in ```C``` and wrapped in ```cython```. But for development, there is a ```python``` implementation.
 
 ## Authors
 Sebastian A. Mueller,
