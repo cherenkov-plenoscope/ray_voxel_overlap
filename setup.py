@@ -1,7 +1,4 @@
 import setuptools
-from setuptools.extension import Extension
-from Cython.Distutils import build_ext
-
 import numpy
 import os
 
@@ -10,7 +7,7 @@ with open("README.md", "r") as f:
 
 setuptools.setup(
     name='ray_voxel_overlap',
-    version="0.0.2",
+    version="0.0.3",
     author='Sebastian Achim Mueller',
     author_email='sebastian-achim.mueller@mpi-hd.mpg.de',
     description='Estimate the tomographic system-matrix for rays in voxels.',
@@ -21,6 +18,7 @@ setuptools.setup(
         'ray_voxel_overlap'
     ],
     install_requires=[
+        'setuptools>=18.0'
         'cython',
         'scipy',
     ],
@@ -37,21 +35,17 @@ setuptools.setup(
         "Topic :: Scientific/Engineering :: Astronomy",
     ],
     python_requires='>=3',
-
-    cmdclass={'build_ext': build_ext},
     ext_modules=[
-        Extension(
+        setuptools.Extension(
             "ray_voxel_overlap._cython_overlap",
             sources=[
                 os.path.join(
                     'ray_voxel_overlap', '_cython_overlap_implementation.pyx'),
                 os.path.join(
-                    'ray_voxel_overlap', '_c_overlap_implementation.cpp'),
+                    'ray_voxel_overlap', '_c_overlap_implementation.c'),
             ],
             include_dirs=[numpy.get_include(), "ray_voxel_overlap"],
-            language="c++",
-            extra_compile_args=['-std=c++0x']
+            language="c",
         ),
     ],
-
 )
