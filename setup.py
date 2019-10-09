@@ -7,7 +7,7 @@ with open("README.md", "r") as f:
 
 setuptools.setup(
     name='ray_voxel_overlap',
-    version="0.0.3",
+    version="0.0.4",
     author='Sebastian Achim Mueller',
     author_email='sebastian-achim.mueller@mpi-hd.mpg.de',
     description='Estimate the tomographic system-matrix for rays in voxels.',
