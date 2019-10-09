@@ -1,5 +1,4 @@
 import setuptools
-from setuptools.extension import Extension
 from Cython.Distutils import build_ext
 
 import numpy
@@ -40,7 +39,7 @@ setuptools.setup(
 
     cmdclass={'build_ext': build_ext},
     ext_modules=[
-        Extension(
+        setuptools.Extension(
             "ray_voxel_overlap._cython_overlap",
             sources=[
                 os.path.join(
