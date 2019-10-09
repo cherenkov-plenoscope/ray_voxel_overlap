@@ -1,5 +1,4 @@
 import setuptools
-
 import numpy
 import os
 
@@ -36,8 +35,6 @@ setuptools.setup(
         "Topic :: Scientific/Engineering :: Astronomy",
     ],
     python_requires='>=3',
-
-    cmdclass={'build_ext': build_ext},
     ext_modules=[
         setuptools.Extension(
             "ray_voxel_overlap._cython_overlap",
@@ -52,5 +49,4 @@ setuptools.setup(
             extra_compile_args=['-std=c++0x']
         ),
     ],
-
 )
