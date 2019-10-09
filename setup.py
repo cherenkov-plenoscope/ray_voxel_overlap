@@ -20,6 +20,7 @@ setuptools.setup(
         'ray_voxel_overlap'
     ],
     install_requires=[
+        'setuptools>=18.0'
         'cython',
         'scipy',
     ],
