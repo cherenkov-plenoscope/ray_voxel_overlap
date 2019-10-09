@@ -42,7 +42,7 @@ setuptools.setup(
                 os.path.join(
                     'ray_voxel_overlap', '_cython_overlap_implementation.pyx'),
                 os.path.join(
-                    'ray_voxel_overlap', '_c_overlap_implementation.cpp'),
+                    'ray_voxel_overlap', '_c_overlap_implementation.c'),
             ],
             include_dirs=[numpy.get_include(), "ray_voxel_overlap"],
             language="c",

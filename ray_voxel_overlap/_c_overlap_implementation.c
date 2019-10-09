@@ -1,7 +1,6 @@
 // Copyright 2017 Sebastian A. Mueller
 #include <math.h>
 
-extern "C" {
 
     void intersection_plane(
         double *support,
@@ -243,4 +242,3 @@ extern "C" {
         }
         return;
     }
-}
