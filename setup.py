@@ -45,8 +45,7 @@ setuptools.setup(
                     'ray_voxel_overlap', '_c_overlap_implementation.cpp'),
             ],
             include_dirs=[numpy.get_include(), "ray_voxel_overlap"],
-            language="c++",
-            extra_compile_args=['-std=c++0x']
+            language="c",
         ),
     ],
 )
