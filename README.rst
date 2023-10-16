@@ -1,7 +1,7 @@
 ##########################################
 Overlap of a ray and a volume cell (voxel)
 ##########################################
-|TestStatus| |PyPiStatus| |BlackStyle|
+|TestStatus| |PyPiStatus| |BlackStyle|  |PackStyleBlack|
 
 Estimate the euclidean overlap passed by a ray within a rectangular volume
 cell (voxel).
@@ -130,5 +130,8 @@ MPI-Heidelberg, Germany (2019-)
 
 .. |PyPiStatus| image:: https://img.shields.io/pypi/v/ray_voxel_overlap
     :target: https://pypi.org/project/ray_voxel_overlap
+
+.. |PackStyleBlack| image:: https://img.shields.io/badge/pack%20style-black-000000.svg
+    :target: https://github.com/cherenkov-plenoscope/black_pack
 
 .. |img_ray_and_voxel| image:: https://github.com/cherenkov-plenoscope/ray_voxel_overlap/blob/main/readme/ray_and_voxel.svg
