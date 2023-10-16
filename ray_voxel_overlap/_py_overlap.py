@@ -17,7 +17,7 @@ def estimate_overlap_of_ray_with_voxels(
     y_range=None,
     z_range=None,
 ):
-    '''
+    """
     Returns the voxel indices and overlap distances for one single ray
     (defined by support and direction) with voxels defined by the bin_edges
     in x,y and z.
@@ -38,7 +38,7 @@ def estimate_overlap_of_ray_with_voxels(
                     (optional)
     z_range         lower and upper bin indices to truncate voxels in z
                     (optional)
-    '''
+    """
     if x_range is None:
         x_range = np.array([0, len(x_bin_edges) - 1])
     if y_range is None:
@@ -47,10 +47,10 @@ def estimate_overlap_of_ray_with_voxels(
         z_range = np.array([0, len(z_bin_edges) - 1])
 
     overlaps = {
-        'x': ar.array('L'),
-        'y': ar.array('L'),
-        'z': ar.array('L'),
-        'overlap': ar.array('f'),
+        "x": ar.array("L"),
+        "y": ar.array("L"),
+        "z": ar.array("L"),
+        "overlap": ar.array("f"),
     }
 
     _overlap_of_ray_with_voxels(
@@ -65,10 +65,10 @@ def estimate_overlap_of_ray_with_voxels(
         z_range=z_range,
     )
     return {
-        'x': np.array(overlaps['x']),
-        'y': np.array(overlaps['y']),
-        'z': np.array(overlaps['z']),
-        'overlap': np.array(overlaps['overlap']),
+        "x": np.array(overlaps["x"]),
+        "y": np.array(overlaps["y"]),
+        "z": np.array(overlaps["z"]),
+        "overlap": np.array(overlaps["overlap"]),
     }
 
 
@@ -98,19 +98,19 @@ def _overlap_of_ray_with_voxels(
                     yl=y_bin_edges[yp[0]],
                     yu=y_bin_edges[yp[1]],
                     zl=z_bin_edges[zp[0]],
-                    zu=z_bin_edges[zp[1]]
+                    zu=z_bin_edges[zp[1]],
                 )
 
                 if (
-                    xp[1]-xp[0] == 1 and
-                    yp[1]-yp[0] == 1 and
-                    zp[1]-zp[0] == 1 and
-                    overlap > 0.0
+                    xp[1] - xp[0] == 1
+                    and yp[1] - yp[0] == 1
+                    and zp[1] - zp[0] == 1
+                    and overlap > 0.0
                 ):
-                    overlaps['x'].append(xp[0])
-                    overlaps['y'].append(yp[0])
-                    overlaps['z'].append(zp[0])
-                    overlaps['overlap'].append(overlap)
+                    overlaps["x"].append(xp[0])
+                    overlaps["y"].append(yp[0])
+                    overlaps["z"].append(zp[0])
+                    overlaps["overlap"].append(overlap)
 
                 elif overlap > 0.0:
                     _overlap_of_ray_with_voxels(
@@ -129,12 +129,14 @@ def _overlap_of_ray_with_voxels(
 
 def _next_space_partitions(dim_range):
     if dim_range[1] - dim_range[0] <= 1:
-        return [[dim_range[0], dim_range[-1]], ]
+        return [
+            [dim_range[0], dim_range[-1]],
+        ]
     else:
-        cut = (dim_range[1] - dim_range[0])//2
+        cut = (dim_range[1] - dim_range[0]) // 2
         return [
             [dim_range[0], dim_range[0] + cut],
-            [dim_range[0] + cut, dim_range[-1]]
+            [dim_range[0] + cut, dim_range[-1]],
         ]
 
 
@@ -189,18 +191,18 @@ def _estimate_ray_box_overlap(support, direction, xl, xu, yl, yu, zl, zu):
         return norm(hits_u[0] - hits_l[0])
 
     elif len(hits_l) == 3 and len(hits_u) == 0:
-        return np.sqrt((xu-xl)**2 + (yu-yl)**2 + (zu-zl)**2)
+        return np.sqrt((xu - xl) ** 2 + (yu - yl) ** 2 + (zu - zl) ** 2)
 
     elif len(hits_l) > 0 and len(hits_u) > 0:
         return norm(hits_u[0] - hits_l[0])
 
     elif len(hits_l) == 0 and len(hits_u) == 3:
-        return np.sqrt((xu-xl)**2 + (yu-yl)**2 + (zu-zl)**2)
+        return np.sqrt((xu - xl) ** 2 + (yu - yl) ** 2 + (zu - zl) ** 2)
 
     else:
         return 0.0
 
 
 def _intersection_plane(support, direction, off, dim):
-    a = (off - support[dim])/direction[dim]
-    return support + direction*a
+    a = (off - support[dim]) / direction[dim]
+    return support + direction * a
