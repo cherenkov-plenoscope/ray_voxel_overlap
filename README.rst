@@ -6,7 +6,8 @@ Overlap of a ray and a volume cell (voxel)
 Estimate the euclidean overlap passed by a ray within a rectangular volume
 cell (voxel).
 
-|img_ray_voxel_overlap|
+
+|img_ray_and_voxel|
 
 
 For a given, rectangular space partitioning in 3D, and a given ray the
@@ -22,7 +23,7 @@ defined by its bin-edges.
 Install
 *******
 
-.. code-block::
+.. code-block:: bash
 
     pip install ray_voxel_overlap
 
@@ -33,7 +34,7 @@ Interface
 There is one core function:
 
 
-.. code-block::python
+.. code-block:: python
 
     import ray_voxel_overlap
     ray_voxel_overlap.estimate_overlap_of_ray_with_voxels?
@@ -71,7 +72,7 @@ there is a narrow depth-of-field.
 Tomographic system-matrix
 *************************
 
-.. code-block::python
+.. code-block:: python
 
     import numpy as np
     import ray_voxel_overlap as rvo
@@ -130,4 +131,4 @@ MPI-Heidelberg, Germany (2019-)
 .. |PyPiStatus| image:: https://img.shields.io/pypi/v/ray_voxel_overlap
     :target: https://pypi.org/project/ray_voxel_overlap
 
-.. |img_ray_voxel_overlap| image:: https://github.com/cherenkov-plenoscope/ray_voxel_overlap/blob/main/ray_voxel_overlap/readme/ray_and_voxel.svg?raw=True
+.. |img_ray_and_voxel| image:: https://github.com/cherenkov-plenoscope/ray_voxel_overlap/blob/main/readme/ray_and_voxel.svg
