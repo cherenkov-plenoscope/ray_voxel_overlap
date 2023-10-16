@@ -1,6 +1,9 @@
 import setuptools
-import numpy
 import os
+import Cython
+from Cython import Build as _
+import numpy
+
 
 with open("README.rst", "r", encoding="utf-8") as f:
     long_description = f.read()
@@ -13,6 +16,21 @@ with open(os.path.join("ray_voxel_overlap", "version.py")) as f:
     version = version_string.strip("\"'")
 
 
+extensions = [
+    setuptools.Extension(
+        name="ray_voxel_overlap._cython_overlap",
+        sources=[
+            os.path.join(
+                "ray_voxel_overlap", "_cython_overlap_implementation.pyx"
+            ),
+            os.path.join("ray_voxel_overlap", "_c_overlap_implementation.c"),
+        ],
+        language="c",
+        include_dirs=[numpy.get_include()],
+    )
+]
+
+
 setuptools.setup(
     name="ray_voxel_overlap",
     version=version,
@@ -23,12 +41,14 @@ setuptools.setup(
     long_description_content_type="text/x-rst",
     url="https://github.com/cherenkov-plenoscope/ray_voxel_overlap",
     packages=["ray_voxel_overlap"],
-    install_requires=[
-        "setuptools>=18.0",
-        "cython",
-        "scipy",
-    ],
-    package_data={"ray_voxel_overlap": []},
+    install_requires=["scipy"],
+    package_data={
+        "ray_voxel_overlap": [
+            os.path.join("_c_overlap_implementation.c"),
+            os.path.join("_cython_overlap_implementation.pyx"),
+        ]
+    },
+    ext_modules=Cython.Build.cythonize(extensions, language_level=3),
     classifiers=[
         "Programming Language :: Python :: 3",
         "Programming Language :: C",
@@ -40,21 +60,5 @@ setuptools.setup(
         "Topic :: Scientific/Engineering :: Medical Science Apps.",
         "Topic :: Scientific/Engineering :: Image Recognition",
         "Topic :: Scientific/Engineering :: Astronomy",
-    ],
-    python_requires=">=3",
-    ext_modules=[
-        setuptools.Extension(
-            "ray_voxel_overlap._cython_overlap",
-            sources=[
-                os.path.join(
-                    "ray_voxel_overlap", "_cython_overlap_implementation.pyx"
-                ),
-                os.path.join(
-                    "ray_voxel_overlap", "_c_overlap_implementation.c"
-                ),
-            ],
-            include_dirs=[numpy.get_include(), "ray_voxel_overlap"],
-            language="c",
-        ),
     ],
 )
